@@ -12,7 +12,15 @@ function App() {
 
   return (
    <>
-      <Leftside />
+      <Leftside 
+        fullName = {fullName}
+        contactInfos = {contactInfos}
+        changeFullName = {(e) => setFullName(e.target.value)}
+        changePhoneNumber = {(e) => setContactInfos([e.target.value, contactInfos[1], contactInfos[2]])}
+        changeEmail = {(e) => setContactInfos([contactInfos[0], e.target.value, contactInfos[2]])}
+        changeAddress = {(e) => setContactInfos([contactInfos[0], contactInfos[1], e.target.value])}
+        
+      />
       <Rightside 
         fullName = {fullName} 
         contactInfos={contactInfos} 
