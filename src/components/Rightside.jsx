@@ -1,17 +1,17 @@
 import { useState } from 'react'
 
-function GeneralInformation (props) {
+function GeneralInformation ({name, labels, datas}) {
   return (
     <div id = "general-info">
       <div id = "avatar"></div>
       <div id = "info">
-        <h1 className = "name">YOUR NAME</h1>
+        <h1 className = "name">{name}</h1>
         <div id = "contact">
           <ul id = "labels">
-            {props.labels.map((label) => <li>{label}</li>)}
+            {labels.map((label) => <li>{label}</li>)}
           </ul>
           <ul>
-            {props.data.map((info) => <li>{info}</li>)}
+            {datas.map((info) => <li>{info}</li>)}
           </ul>
         </div>
       </div>
@@ -51,59 +51,23 @@ function Practical (data) {
   );
 }
 
-function Section (props) {
+function Section ({title, content}) {
   return (
-    <div className = "section">
-      <div id = "header"><h1>{props.title}</h1></div> 
+    <section className = "section">
+      <div id = "header"><h1>{title}</h1></div> 
       <div id = "content">
-        { props.content }
+        { content }
       </div>
-    </div>
+    </section>
   );
 }
 
-function Rightside() {
+function Rightside ({fullName, contactInfos, educationalExperiences, practicalExperiences}) {  
   const contactLabels = ["Phone", "Email", "Address"];
-  const [contactInfos, setContactInfos] = useState(["0123456789", "dummy@text.com", "Hanoi, Vietnam"]);
-  const [educationalExperiences, setEducationalExperience] = useState([
-    {
-      "from": "2020",
-      "to": "2023",
-      "role": "Student",
-      "school": "Nguyen Hue High School for Gifted Student",
-      "id": "1",
-    },
-    
-    {
-      "from": "Sep 2023",
-      "to": "Now",
-      "role": "Student",
-      "school": "VNU University of Engineering and Technology",
-      "id": "2",
-    },
-  ]);
-  const [practicalExperiences, setPracticalExperience] = useState([
-    {
-      "from": "Dec 2023",
-      "to": "Sep 2024",
-      "role": "Front-End Developer",
-      "position": "Junior",
-      "company": "Ligma Company",
-      "id": "1",
-    },
-    {
-      "from": "Sep 2024",
-      "to": "Now",
-      "role": "Full-Stack Developer",
-      "position": "",
-      "company": "Ball Company",
-      "id": "2",
-    },
-  ]);
 
   return (
     <div className = "panel preview" id = "right-side">
-      <GeneralInformation labels = {contactLabels} data = {contactInfos}/>
+      <GeneralInformation name = {fullName} labels = {contactLabels} datas = {contactInfos}/>
       <Section title = "Education" content = {Education(educationalExperiences)} />
       <Section title = "Practical Experience" content = {Practical(practicalExperiences)} />
     </div>
