@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import './App.css'
+import Leftside from './components/Leftside.jsx'
+import Rightside from './components/Rightside.jsx'
 
 function App() {
   return (
-    <>
-      <h1>Hello World </h1>
-      <button>Submit</button>
-      <a href = "">Click</a>
+   <>
+      <Leftside />
+      <Rightside />
    </>
   )
 }

@@ -1,0 +1,7 @@
+#root {
+  display: flex;
+  width: 100%;
+}
+#root > .panel {
+  flex: 1;
+}
