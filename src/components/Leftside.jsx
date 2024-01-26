@@ -51,7 +51,14 @@ function GeneralInfo (props) {
 function Place (props) {
   return (
     <form className = "place" data-index = {props.index}>
-      <h1>{props.school}</h1>
+      <div id = "header">
+        <input 
+          type = "checkbox" 
+          onChange = {props.showEducationPlace} 
+          checked = {props.show ? true : false} 
+        />
+        <h1>{props.school}</h1>
+      </div>
       
       <label htmlFor = "school">School:</label>
       <Input 
@@ -84,6 +91,8 @@ function Place (props) {
         value = {props.role}
         onChange = {props.changeEducation}
       />
+
+      <button type = "button" onClick = {props.removeEducationPlace}>Remove</button>
     </form>
   );
 }
@@ -91,48 +100,61 @@ function Place (props) {
 function Education (props) {
   return (
     <>
-      {props.educationalExperiences.map((place) => {
+      {props.educationalExperiences.map((place, index) => {
         return ( 
           <Place 
             from = {place.from}
             to = {place.to}
             role = {place.role}
             school = {place.school}
-            index = {place.id}
+            index = {index}
             key = {place.id}
+            show = {place.show}
             changeEducation = {props.changeEducation}
+            removeEducationPlace = {props.removeEducationPlace}
+            showEducationPlace = {props.showEducationPlace}
           />
         )
       })}
+      <a href = "#" onClick = {props.newEducationPlace}>+ Add schools/universities</a>
     </>
   );
 }
 
 function Section (props) {
   let content;
-  if (props.title == "General Information") {
-    content = (
-      <GeneralInfo 
-        fullName = {props.fullName}
-        contactInfos = {props.contactInfos}
-        changeFullName = {props.changeFullName} 
-        changePhoneNumber = {props.changePhoneNumber}
-        changeEmail = {props.changeEmail}
-        changeAddress = {props.changeAddress}
-      />
-    );
-  } else if (props.title == "Education") {
-    content = (
-      <Education
-        educationalExperiences = {props.educationalExperiences}
-        changeEducation = {props.changeEducation}
-      />
-    );   
+  switch (props.title) {
+    case "General Information": {
+      content = (
+        <GeneralInfo 
+          fullName = {props.fullName}
+          contactInfos = {props.contactInfos}
+          changeFullName = {props.changeFullName} 
+          changePhoneNumber = {props.changePhoneNumber}
+          changeEmail = {props.changeEmail}
+          changeAddress = {props.changeAddress}
+        />
+      );
+      break;
+    } 
+    case "Education": {
+      content = (
+        <Education
+          educationalExperiences = {props.educationalExperiences}
+          changeEducation = {props.changeEducation}
+          removeEducationPlace = {props.removeEducationPlace}
+          newEducationPlace = {props.newEducationPlace}
+          showEducationPlace = {props.showEducationPlace}
+        />
+      );   
+      break;
+    }
+    default:
   }
+  
   return (
     <section className = "section">
       <div id = "header">
-        <input type = "checkbox" />
         <h1>{props.title}</h1>
       </div>
       <div id = "content">
@@ -160,6 +182,9 @@ function Leftside (props) {
         key = "2"
         educationalExperiences = {props.educationalExperiences}
         changeEducation = {props.changeEducation}
+        removeEducationPlace = {props.removeEducationPlace}
+        newEducationPlace = {props.newEducationPlace}
+        showEducationPlace = {props.showEducationPlace}
       />
     </div>
   );

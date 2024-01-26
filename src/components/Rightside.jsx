@@ -21,7 +21,7 @@ function GeneralInformation ({name, labels, datas}) {
 
 function Education (data) {
   return (
-    data.map((place) => {
+    data.filter(place => place.show === 1).map((place) => {
       return (
         <div className = "place" key = {place.id}>
           <div id = "time-range">{place.from + " - " + place.to}</div>
@@ -37,7 +37,7 @@ function Education (data) {
 
 function Practical (data) {
   return (
-    data.map((place) => {
+    data.filter(place => place.show === 1).map((place) => {
       return (
         <div className = "place" key = {place.id}>
           <div id = "time-range">{place.from + " - " + place.to}</div>

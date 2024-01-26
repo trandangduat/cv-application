@@ -16,6 +16,7 @@ function App() {
         fullName = {fullName}
         contactInfos = {contactInfos}
         educationalExperiences = {educationalExperiences}
+        practicalExperiences = {practicalExperiences}
 
 
         
@@ -38,11 +39,42 @@ function App() {
             // 'const newEducation = educationalExperiences;' doesn't work here
             // because then 'newEducation' just references the existing array 
             const newEducation = [...educationalExperiences];
-            for (let i = 0; i < newEducation.length; i++) {
-              if (newEducation[i].id == index) {
-                newEducation[i][e.target.getAttribute("name")] = e.target.value;
-                break;
+            newEducation[index][e.target.getAttribute("name")] = e.target.value;
+            setEducationalExperiences(newEducation);
+          }
+        }
+        removeEducationPlace = {
+          (e) => {
+            let index = e.target.parentElement.getAttribute("data-index");
+            const newEducation = [...educationalExperiences];
+            newEducation.splice(index, 1);
+            setEducationalExperiences(newEducation);
+          }
+        }
+        newEducationPlace = {
+          (e) => {
+            e.preventDefault();
+            const newEducation = [...educationalExperiences];
+            newEducation.push(
+              {
+                "from": "",
+                "to": "",
+                "role": "",
+                "school": "School/ University name",
+                "id": crypto.randomUUID(),
               }
+            );
+            setEducationalExperiences(newEducation);
+          }
+        }
+        showEducationPlace = {
+          (e) => {
+            let index = e.target.parentElement.parentElement.getAttribute("data-index");
+            const newEducation = [...educationalExperiences];
+            if (newEducation[index].show) {
+              newEducation[index].show = 0;
+            } else {
+              newEducation[index].show = 1;
             }
             setEducationalExperiences(newEducation);
           }

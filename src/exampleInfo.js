@@ -5,7 +5,8 @@ const exampleEducationalExperiences = [
     "to": "2023",
     "role": "Student",
     "school": "Nguyen Hue High School for Gifted Student",
-    "id": "1",
+    "id": crypto.randomUUID(),
+    "show": 1,
   },
   
   {
@@ -13,7 +14,8 @@ const exampleEducationalExperiences = [
     "to": "Now",
     "role": "Student",
     "school": "VNU University of Engineering and Technology",
-    "id": "2",
+    "id": crypto.randomUUID(),
+    "show": 1,
   },
 ];
 const examplePracticalExperiences = [
@@ -23,7 +25,8 @@ const examplePracticalExperiences = [
     "role": "Front-End Developer",
     "position": "Junior",
     "company": "Ligma Company",
-    "id": "1",
+    "id": crypto.randomUUID(),
+    "show": 1,
   },
   {
     "from": "Sep 2024",
@@ -31,7 +34,8 @@ const examplePracticalExperiences = [
     "role": "Full-Stack Developer",
     "position": "",
     "company": "Ball Company",
-    "id": "2",
+    "id": crypto.randomUUID(),
+    "show": 1,
   },
 ];
 
