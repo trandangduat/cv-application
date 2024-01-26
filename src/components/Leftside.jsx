@@ -48,13 +48,13 @@ function GeneralInfo (props) {
   );
 }
 
-function Place (props) {
+function School (props) {
   return (
     <form className = "place" data-index = {props.index}>
       <div id = "header">
         <input 
           type = "checkbox" 
-          onChange = {props.showEducationPlace} 
+          onChange = {props.showSchool} 
           checked = {props.show ? true : false} 
         />
         <h1>{props.school}</h1>
@@ -92,7 +92,64 @@ function Place (props) {
         onChange = {props.changeEducation}
       />
 
-      <button type = "button" onClick = {props.removeEducationPlace}>Remove</button>
+      <button type = "button" onClick = {props.removeSchool}>Remove</button>
+    </form>
+  );
+}
+
+function Company (props) {
+  return (
+    <form className = "place" data-index = {props.index}>
+      <div id = "header">
+        <input 
+          type = "checkbox" 
+          onChange = {props.showCompany} 
+          checked = {props.show ? true : false} 
+        />
+        <h1>{props.company}</h1>
+      </div>
+      
+      <label htmlFor = "company">Company:</label>
+      <Input 
+        type = "text" 
+        name = "company"
+        value = {props.company}
+        onChange = {props.changePracticalExperiences}
+      />
+      
+      <label htmlFor = "from">From:</label>
+      <Input 
+        type = "date" 
+        name = "from"
+        value = {props.from}
+        onChange = {props.changePracticalExperiences}
+      />
+      
+      <label htmlFor = "to">To:</label>
+      <Input 
+        type = "date" 
+        name = "to"
+        value = {props.to}
+        onChange = {props.changePracticalExperiences}
+      />
+      
+      <label htmlFor = "role">Role:</label>
+      <Input 
+        type = "text" 
+        name = "role"
+        value = {props.role}
+        onChange = {props.changePracticalExperiences}
+      />
+      
+      <label htmlFor = "position">Position:</label>
+      <Input 
+        type = "text" 
+        name = "position"
+        value = {props.position}
+        onChange = {props.changePracticalExperiences}
+      />
+
+      <button type = "button" onClick = {props.removeCompany}>Remove</button>
     </form>
   );
 }
@@ -102,7 +159,7 @@ function Education (props) {
     <>
       {props.educationalExperiences.map((place, index) => {
         return ( 
-          <Place 
+          <School
             from = {place.from}
             to = {place.to}
             role = {place.role}
@@ -111,12 +168,38 @@ function Education (props) {
             key = {place.id}
             show = {place.show}
             changeEducation = {props.changeEducation}
-            removeEducationPlace = {props.removeEducationPlace}
-            showEducationPlace = {props.showEducationPlace}
+            removeSchool = {props.removeSchool}
+            showSchool = {props.showSchool}
           />
         )
       })}
-      <a href = "#" onClick = {props.newEducationPlace}>+ Add schools/universities</a>
+      <a href = "#" onClick = {props.newSchool}>+ Add schools/universities</a>
+    </>
+  );
+}
+
+function PracticalExperiences (props) {
+  return (
+    <>
+      {props.practicalExperiences.map((place, index) => {
+        console.log(place);
+        return ( 
+          <Company
+            from = {place.from}
+            to = {place.to}
+            role = {place.role}
+            position = {place.position}
+            company = {place.company}
+            index = {index}
+            key = {place.id}
+            show = {place.show}
+            changePracticalExperiences = {props.changePracticalExperiences}
+            removeCompany = {props.removeCompany}
+            showCompany = {props.showCompany}
+          />
+        )
+      })}
+      <a href = "#" onClick = {props.newCompany}>+ Add schools/universities</a>
     </>
   );
 }
@@ -142,11 +225,23 @@ function Section (props) {
         <Education
           educationalExperiences = {props.educationalExperiences}
           changeEducation = {props.changeEducation}
-          removeEducationPlace = {props.removeEducationPlace}
-          newEducationPlace = {props.newEducationPlace}
-          showEducationPlace = {props.showEducationPlace}
+          removeSchool = {props.removeSchool}
+          newSchool = {props.newSchool}
+          showSchool = {props.showSchool}
         />
       );   
+      break;
+    }
+    case "Practical Experiences": {
+      content = (
+        <PracticalExperiences 
+          practicalExperiences = {props.practicalExperiences}
+          changePracticalExperiences = {props.changePracticalExperiences}
+          removeCompany = {props.removeCompany}
+          newCompany = {props.newCompany}
+          showCompany = {props.showCompany}
+        />
+      );
       break;
     }
     default:
@@ -182,9 +277,18 @@ function Leftside (props) {
         key = "2"
         educationalExperiences = {props.educationalExperiences}
         changeEducation = {props.changeEducation}
-        removeEducationPlace = {props.removeEducationPlace}
-        newEducationPlace = {props.newEducationPlace}
-        showEducationPlace = {props.showEducationPlace}
+        removeSchool = {props.removeSchool}
+        newSchool = {props.newSchool}
+        showSchool = {props.showSchool}
+      />
+      <Section 
+        title = "Practical Experiences"
+        key = "3"
+        practicalExperiences = {props.practicalExperiences}
+        changePracticalExperiences = {props.changePracticalExperiences}
+        removeCompany = {props.removeCompany}
+        newCompany = {props.newCompany}
+        showCompany = {props.showCompany}
       />
     </div>
   );

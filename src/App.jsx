@@ -43,7 +43,7 @@ function App() {
             setEducationalExperiences(newEducation);
           }
         }
-        removeEducationPlace = {
+        removeSchool = {
           (e) => {
             let index = e.target.parentElement.getAttribute("data-index");
             const newEducation = [...educationalExperiences];
@@ -51,7 +51,7 @@ function App() {
             setEducationalExperiences(newEducation);
           }
         }
-        newEducationPlace = {
+        newSchool = {
           (e) => {
             e.preventDefault();
             const newEducation = [...educationalExperiences];
@@ -67,7 +67,7 @@ function App() {
             setEducationalExperiences(newEducation);
           }
         }
-        showEducationPlace = {
+        showSchool = {
           (e) => {
             let index = e.target.parentElement.parentElement.getAttribute("data-index");
             const newEducation = [...educationalExperiences];
@@ -77,6 +77,52 @@ function App() {
               newEducation[index].show = 1;
             }
             setEducationalExperiences(newEducation);
+          }
+        }
+        changePracticalExperiences = {
+          (e) => {
+            let index = e.target.parentElement.getAttribute("data-index");
+            const newPracticalExperiences = [...practicalExperiences];
+            newPracticalExperiences[index][e.target.getAttribute("name")] = e.target.value;
+            setPracticalExperiences(newPracticalExperiences);
+          }
+        }
+        removeCompany = {
+          (e) => {
+            let index = e.target.parentElement.getAttribute("data-index");
+            const newPracticalExperiences = [...practicalExperiences];
+            newPracticalExperiences.splice(index, 1);
+            setPracticalExperiences(newPracticalExperiences);
+          }
+        }
+        newCompany = {
+          (e) => {
+            e.preventDefault();
+            const newPracticalExperiences = [...practicalExperiences];
+            newPracticalExperiences.push(
+              {
+                "from": "",
+                "to": "",
+                "role": "",
+                "position": "",
+                "company": "Company name",
+                "id": crypto.randomUUID(),
+                "show": 1,
+              },
+            );
+            setPracticalExperiences(newPracticalExperiences);
+          }
+        }
+        showCompany = {
+          (e) => {
+            let index = e.target.parentElement.parentElement.getAttribute("data-index");
+            const newPracticalExperiences = [...practicalExperiences];
+            if (newPracticalExperiences[index].show) {
+              newPracticalExperiences[index].show = 0;
+            } else {
+              newPracticalExperiences[index].show = 1;
+            }
+            setPracticalExperiences(newPracticalExperiences);
           }
         }
         
