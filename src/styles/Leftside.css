@@ -1,0 +1,41 @@
+#left-side {
+  padding: 2rem;
+  padding-right: 0;
+  
+  .section {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: #FFF;
+  }
+  .section {
+    & > #header {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+      padding: .2rem 1rem;
+      
+      h2 {
+        font-weight: 500;
+      }
+    }
+    #content {
+      padding: 1.5rem 3rem;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: .9rem;
+
+        div {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            color: #202020;
+            font-size: .9rem;
+          }
+        }
+        #header {
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}

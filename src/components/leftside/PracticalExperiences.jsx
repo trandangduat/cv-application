@@ -9,43 +9,43 @@ function Company (props) {
           onChange = {props.showCompany} 
           checked = {props.show ? true : false} 
         />
-        <h1>{props.company}</h1>
+        <p>{props.company}</p>
       </div>
       
-      <label htmlFor = "company">Company:</label>
       <Input 
+        title = "Company"
         type = "text" 
         name = "company"
         value = {props.company}
         onChange = {props.changePracticalExperiences}
       />
       
-      <label htmlFor = "from">From:</label>
       <Input 
+        title = "From"
         type = "date" 
         name = "from"
         value = {props.from}
         onChange = {props.changePracticalExperiences}
       />
       
-      <label htmlFor = "to">To:</label>
       <Input 
+        title = "To"
         type = "date" 
         name = "to"
         value = {props.to}
         onChange = {props.changePracticalExperiences}
       />
       
-      <label htmlFor = "role">Role:</label>
       <Input 
+        title = "Role"
         type = "text" 
         name = "role"
         value = {props.role}
         onChange = {props.changePracticalExperiences}
       />
       
-      <label htmlFor = "position">Position:</label>
       <Input 
+        title = "Position"
         type = "text" 
         name = "position"
         value = {props.position}

@@ -1,0 +1,58 @@
+#right-side {
+  background: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  aspect-ratio: 8/10;
+  padding: 4rem;
+  margin: 2rem 4rem;
+  
+  #general-info {
+    flex-direction: row;
+    gap: 5rem;
+  }
+  .section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+    
+    #header {
+      border-bottom: 2px solid black;
+    }
+    #header > h2 {
+      text-transform: uppercase;
+    }
+    #content {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    #content > .place {
+      display: grid;
+      grid-template-columns: .3fr .7fr;
+    }
+    #content > .place  #place-name {
+      font-weight: 500;
+    }
+  }
+  #general-info > #avatar {
+    width: 9rem;
+    aspect-ratio: 3/4;
+    background: #D9D9D9;
+    margin: auto 0;
+  }
+  #general-info > #info {
+    flex: 1 1 auto;
+    gap: .7rem;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+  #general-info > #info > #contact {
+    display: flex;
+    gap: 3rem;
+  }
+  #general-info > #info > #contact > #labels {
+    font-weight: 500;
+  }
+}
+

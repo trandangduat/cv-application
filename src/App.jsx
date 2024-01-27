@@ -62,6 +62,7 @@ function App() {
                 "role": "",
                 "school": "School/ University name",
                 "id": crypto.randomUUID(),
+                "show": 1,
               }
             );
             setEducationalExperiences(newEducation);

@@ -1,6 +1,7 @@
 import GeneralInfo from "./leftside/GeneralInfo.jsx";
 import Education from "./leftside/Education.jsx";
 import PracticalExperiences from "./leftside/PracticalExperiences.jsx";
+import '../styles/Leftside.css'
 
 function Section (props) {
   let content;
@@ -48,7 +49,7 @@ function Section (props) {
   return (
     <section className = "section">
       <div id = "header">
-        <h1>{props.title}</h1>
+        <h2>{props.title}</h2>
       </div>
       <div id = "content">
         {content}

@@ -9,35 +9,35 @@ function School (props) {
           onChange = {props.showSchool} 
           checked = {props.show ? true : false} 
         />
-        <h1>{props.school}</h1>
+        <p>{props.school}</p>
       </div>
       
-      <label htmlFor = "school">School:</label>
       <Input 
+        title = "School"
         type = "text" 
         name = "school"
         value = {props.school}
         onChange = {props.changeEducation}
       />
       
-      <label htmlFor = "from">From:</label>
       <Input 
+        title = "From"
         type = "date" 
         name = "from"
         value = {props.from}
         onChange = {props.changeEducation}
       />
       
-      <label htmlFor = "to">To:</label>
       <Input 
+        title = "To"
         type = "date" 
         name = "to"
         value = {props.to}
         onChange = {props.changeEducation}
       />
       
-      <label htmlFor = "role">Role:</label>
       <Input 
+        title = "Role"
         type = "text" 
         name = "role"
         value = {props.role}

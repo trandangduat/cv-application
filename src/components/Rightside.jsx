@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import '../styles/Rightside.css';
 
 function GeneralInformation ({name, labels, datas}) {
   return (
-    <div id = "general-info">
+    <section className = "section" id = "general-info">
       <div id = "avatar"></div>
       <div id = "info">
-        <h1 className = "name">{name}</h1>
+        <h2 className = "name">{name}</h2>
         <div id = "contact">
           <ul id = "labels">
             {labels.map((label) => <li>{label}</li>)}
@@ -15,7 +15,7 @@ function GeneralInformation ({name, labels, datas}) {
           </ul>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -54,7 +54,7 @@ function Practical (data) {
 function Section ({title, content}) {
   return (
     <section className = "section">
-      <div id = "header"><h1>{title}</h1></div> 
+      <div id = "header"><h2>{title}</h2></div> 
       <div id = "content">
         { content }
       </div>
