@@ -4,6 +4,7 @@
   aspect-ratio: 8/10;
   padding: 4rem;
   margin: 2rem 4rem;
+  height: 0%;
   
   #general-info {
     flex-direction: row;

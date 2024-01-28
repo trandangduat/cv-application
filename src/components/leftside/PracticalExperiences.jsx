@@ -4,19 +4,42 @@ function Company (props) {
   return (
     <form className = "place" data-index = {props.index}>
       <div id = "header">
-        <input 
-          type = "checkbox" 
-          onChange = {props.showCompany} 
-          checked = {props.show ? true : false} 
-        />
-        <p>{props.company}</p>
+        <div id = "title">
+          <input 
+            type = "checkbox" 
+            onChange = {props.showCompany} 
+            checked = {props.show ? true : false} 
+          />
+          <p>{props.company}</p>
+        </div>
+        <div id = "control">
+          <button type = "button" onClick = {props.removeCompany}>Remove</button>
+        </div>
+        
       </div>
       
+      <div id = "place-info">
       <Input 
         title = "Company"
         type = "text" 
         name = "company"
         value = {props.company}
+        onChange = {props.changePracticalExperiences}
+      />
+        
+      <Input 
+        title = "Role"
+        type = "text" 
+        name = "role"
+        value = {props.role}
+        onChange = {props.changePracticalExperiences}
+      />
+      
+      <Input 
+        title = "Position"
+        type = "text" 
+        name = "position"
+        value = {props.position}
         onChange = {props.changePracticalExperiences}
       />
       
@@ -36,23 +59,7 @@ function Company (props) {
         onChange = {props.changePracticalExperiences}
       />
       
-      <Input 
-        title = "Role"
-        type = "text" 
-        name = "role"
-        value = {props.role}
-        onChange = {props.changePracticalExperiences}
-      />
-      
-      <Input 
-        title = "Position"
-        type = "text" 
-        name = "position"
-        value = {props.position}
-        onChange = {props.changePracticalExperiences}
-      />
-
-      <button type = "button" onClick = {props.removeCompany}>Remove</button>
+      </div>
     </form>
   );
 }

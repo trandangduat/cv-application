@@ -34,7 +34,7 @@ function App() {
         }
         changeEducation = {
           (e) => {
-            let index = e.target.parentElement.getAttribute("data-index");
+            let index = e.target.closest(".place").getAttribute("data-index");
             // IMPORTANT: 
             // 'const newEducation = educationalExperiences;' doesn't work here
             // because then 'newEducation' just references the existing array 
@@ -45,7 +45,7 @@ function App() {
         }
         removeSchool = {
           (e) => {
-            let index = e.target.parentElement.getAttribute("data-index");
+            let index = e.target.closest(".place").getAttribute("data-index");
             const newEducation = [...educationalExperiences];
             newEducation.splice(index, 1);
             setEducationalExperiences(newEducation);
@@ -70,7 +70,7 @@ function App() {
         }
         showSchool = {
           (e) => {
-            let index = e.target.parentElement.parentElement.getAttribute("data-index");
+            let index = e.target.closest(".place").getAttribute("data-index");
             const newEducation = [...educationalExperiences];
             if (newEducation[index].show) {
               newEducation[index].show = 0;
@@ -82,7 +82,7 @@ function App() {
         }
         changePracticalExperiences = {
           (e) => {
-            let index = e.target.parentElement.getAttribute("data-index");
+            let index = e.target.closest(".place").getAttribute("data-index");
             const newPracticalExperiences = [...practicalExperiences];
             newPracticalExperiences[index][e.target.getAttribute("name")] = e.target.value;
             setPracticalExperiences(newPracticalExperiences);
@@ -90,7 +90,7 @@ function App() {
         }
         removeCompany = {
           (e) => {
-            let index = e.target.parentElement.getAttribute("data-index");
+            let index = e.target.closest(".place").getAttribute("data-index");
             const newPracticalExperiences = [...practicalExperiences];
             newPracticalExperiences.splice(index, 1);
             setPracticalExperiences(newPracticalExperiences);
@@ -116,7 +116,7 @@ function App() {
         }
         showCompany = {
           (e) => {
-            let index = e.target.parentElement.parentElement.getAttribute("data-index");
+            let index = e.target.closest(".place").getAttribute("data-index");
             const newPracticalExperiences = [...practicalExperiences];
             if (newPracticalExperiences[index].show) {
               newPracticalExperiences[index].show = 0;

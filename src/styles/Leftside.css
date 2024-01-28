@@ -1,39 +1,80 @@
 #left-side {
   padding: 2rem;
   padding-right: 0;
+
+  .section#window {
+    position: fixed;
+    resize: both;
+    overflow: auto;
+    z-index: 1;
+  }
   
   .section {
     border: 1px solid rgba(0, 0, 0, 0.10);
     background: #FFF;
-  }
-  .section {
+    border-radius: 6px;
+    
     & > #header {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.10);
-      padding: .2rem 1rem;
+      padding: 1.2rem;
+      padding-bottom: 0;
       
       h2 {
         font-weight: 500;
+        font-size: 1.2rem;
+        padding: 0rem 1.2rem;
+        background: #eeeeee;
+        color: black;
+        border-radius: 5px;
       }
     }
     #content {
       padding: 1.5rem 3rem;
-
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      .place {
+        #header {
+          padding-bottom: 0;
+          p {
+            font-weight: 500;
+            padding: 0rem 1.2rem;
+            background: #eeeeee;
+            color: black;
+            border-radius: 5px;  
+            font-weight: 500;
+          }
+        }
+        #place-info {
+          padding: 1rem 2.5rem;
+          display: flex;
+          gap: .9rem;
+        }
+      }
+      form:not(.place) {
+        gap: 0.9rem;
+      }
       form {
         display: flex;
         flex-direction: column;
-        gap: .9rem;
-
         div {
           display: flex;
           flex-direction: column;
-
           label {
             color: #202020;
             font-size: .9rem;
+            width: max-content;
           }
         }
         #header {
           flex-direction: row;
+          justify-content: space-between;
+          gap: 0.5em;
+          #title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: .5rem;
+          }
         }
       }
     }

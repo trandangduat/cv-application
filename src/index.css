@@ -1,7 +1,8 @@
 :root {
   --fade-border-color: rgb(0 0 0 / 15%);
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */ line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -12,6 +13,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
 }
 
 a {
@@ -38,7 +43,7 @@ h1 {
 
 button {
   border: 1px solid var(--fade-border-color);
-  padding: 0.6em 1.2em;
+  padding: 0.3em 1em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -46,12 +51,6 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
   color: black;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border-radius: 6px;
 }
 

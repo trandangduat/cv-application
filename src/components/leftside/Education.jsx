@@ -4,19 +4,33 @@ function School (props) {
   return (
     <form className = "place" data-index = {props.index}>
       <div id = "header">
-        <input 
-          type = "checkbox" 
-          onChange = {props.showSchool} 
-          checked = {props.show ? true : false} 
-        />
-        <p>{props.school}</p>
+        <div id = "title">
+          <input 
+            type = "checkbox" 
+            onChange = {props.showSchool} 
+            checked = {props.show ? true : false} 
+          />
+          <p>{props.school}</p>
+        </div>
+        <div id = "control">
+          <button type = "button" onClick = {props.removeSchool}>Remove</button>
+        </div>
       </div>
       
+      <div id = "place-info">
       <Input 
         title = "School"
         type = "text" 
         name = "school"
         value = {props.school}
+        onChange = {props.changeEducation}
+      />
+        
+      <Input 
+        title = "Role"
+        type = "text" 
+        name = "role"
+        value = {props.role}
         onChange = {props.changeEducation}
       />
       
@@ -36,15 +50,8 @@ function School (props) {
         onChange = {props.changeEducation}
       />
       
-      <Input 
-        title = "Role"
-        type = "text" 
-        name = "role"
-        value = {props.role}
-        onChange = {props.changeEducation}
-      />
+      </div>
 
-      <button type = "button" onClick = {props.removeSchool}>Remove</button>
     </form>
   );
 }
