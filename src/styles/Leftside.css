@@ -46,8 +46,19 @@
         }
         #place-info {
           padding: 1rem 2.5rem;
-          display: flex;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
           gap: .9rem;
+          div:has(#school),
+          div:has(#company),
+          div:has(#role),
+          div:has(#position) {
+            grid-column: span 2;
+          }
+          > div {
+            display: flex;
+            flex-direction: column;
+          }
         }
       }
       form:not(.place) {
@@ -56,7 +67,7 @@
       form {
         display: flex;
         flex-direction: column;
-        div {
+        > div {
           display: flex;
           flex-direction: column;
           label {

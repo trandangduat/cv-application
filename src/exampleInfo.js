@@ -1,8 +1,8 @@
 const exampleGeneralInfo = ["0123456789", "dummy@text.com", "Hanoi, Vietnam"];
 const exampleEducationalExperiences = [
   {
-    "from": "2020",
-    "to": "2023",
+    "from": "2020-09-01",
+    "to": "2023-05-01",
     "role": "Student",
     "school": "Nguyen Hue High School for Gifted Student",
     "id": crypto.randomUUID(),
@@ -10,8 +10,8 @@ const exampleEducationalExperiences = [
   },
   
   {
-    "from": "Sep 2023",
-    "to": "Now",
+    "from": "2023-09-01",
+    "to": "2023-05-15",
     "role": "Student",
     "school": "VNU University of Engineering and Technology",
     "id": crypto.randomUUID(),
@@ -20,8 +20,8 @@ const exampleEducationalExperiences = [
 ];
 const examplePracticalExperiences = [
   {
-    "from": "Dec 2023",
-    "to": "Sep 2024",
+    "from": "2023-12-01",
+    "to": "2024-09-01",
     "role": "Front-End Developer",
     "position": "Junior",
     "company": "Ligma Company",
@@ -29,8 +29,8 @@ const examplePracticalExperiences = [
     "show": 1,
   },
   {
-    "from": "Sep 2024",
-    "to": "Now",
+    "from": "2024-12-01",
+    "to": "2024-01-28",
     "role": "Full-Stack Developer",
     "position": "",
     "company": "Ball Company",
