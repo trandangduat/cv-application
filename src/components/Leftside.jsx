@@ -9,8 +9,10 @@ function Section (props) {
     case "General Information": {
       content = (
         <GeneralInfo 
+          avatarSrc = {props.avatarSrc}
           fullName = {props.fullName}
           contactInfos = {props.contactInfos}
+          changeAvatarSrc = {props.changeAvatarSrc}
           changeFullName = {props.changeFullName} 
           changePhoneNumber = {props.changePhoneNumber}
           changeEmail = {props.changeEmail}
@@ -64,8 +66,10 @@ function Leftside (props) {
       <Section 
         title = "General Information" 
         key = "1"
+        avatarSrc = {props.avatarSrc}
         fullName = {props.fullName}
         contactInfos = {props.contactInfos}
+        changeAvatarSrc = {props.changeAvatarSrc}
         changeFullName = {props.changeFullName}
         changePhoneNumber = {props.changePhoneNumber}
         changeEmail = {props.changeEmail}

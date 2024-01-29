@@ -5,6 +5,7 @@ import Leftside from './components/Leftside.jsx'
 import Rightside from './components/Rightside.jsx'
   
 function App() {
+  const [avatarSrc, setAvatarSrc] = useState("");
   const [fullName, setFullName] = useState("YOUR NAME");
   const [contactInfos, setContactInfos] = useState(exampleGeneralInfo);
   const [educationalExperiences, setEducationalExperiences] = useState(exampleEducationalExperiences);
@@ -13,13 +14,30 @@ function App() {
   return (
    <>
       <Leftside 
+        avatarSrc = {avatarSrc}
         fullName = {fullName}
         contactInfos = {contactInfos}
         educationalExperiences = {educationalExperiences}
         practicalExperiences = {practicalExperiences}
-
-
         
+        changeAvatarSrc = {
+          (event) => {
+            let input = event.target;
+            // Ensure that a file was selected
+            if (input.files && input.files[0]) {
+              let reader = new FileReader();
+              // Set up the reader to load the image
+              reader.onload = function (e) {
+                setAvatarSrc(e.target.result);
+              };
+              // Read the image file as a data URL
+              reader.readAsDataURL(input.files[0]);
+            } else {
+              // If no file is selected, clear the preview
+              alert("No file was chosen!");
+            }
+          } 
+        }
         changeFullName = {
           (e) => setFullName(e.target.value)
         }
@@ -129,10 +147,11 @@ function App() {
         
       />
       <Rightside 
+        avatarSrc = {avatarSrc}
         fullName = {fullName} 
-        contactInfos={contactInfos} 
-        educationalExperiences={educationalExperiences} 
-        practicalExperiences={practicalExperiences}
+        contactInfos = {contactInfos} 
+        educationalExperiences = {educationalExperiences} 
+        practicalExperiences = {practicalExperiences}
       />
    </>
   )

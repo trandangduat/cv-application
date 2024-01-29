@@ -4,6 +4,13 @@ function GeneralInfo (props) {
   return (
     <form>
       <Input 
+        title = "Profile picture"
+        type = "file"
+        name = "avatar"
+        onChange = {props.changeAvatarSrc}
+      />
+      
+      <Input 
         title = "Full name"
         type = "text" 
         name = "full-name"  

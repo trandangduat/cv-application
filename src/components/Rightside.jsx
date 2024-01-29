@@ -1,10 +1,18 @@
 import '../styles/Rightside.css';
 import moment from 'moment';
 
-function GeneralInformation ({name, labels, datas}) {
+function GeneralInformation ({avatarSrc, name, labels, datas}) {
   return (
     <section className = "section" id = "general-info">
-      <div id = "avatar"></div>
+      <div 
+        id = "avatar" 
+        style = {{
+          backgroundImage: `url(${avatarSrc})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+        }}
+      ></div>
       <div id = "info">
         <h2 className = "name">{name}</h2>
         <div id = "contact">
@@ -67,12 +75,12 @@ function Section ({title, content}) {
   );
 }
 
-function Rightside ({fullName, contactInfos, educationalExperiences, practicalExperiences}) {  
+function Rightside ({avatarSrc, fullName, contactInfos, educationalExperiences, practicalExperiences}) {  
   const contactLabels = ["Phone", "Email", "Address"];
 
   return (
     <div className = "panel preview" id = "right-side">
-      <GeneralInformation name = {fullName} labels = {contactLabels} datas = {contactInfos}/>
+      <GeneralInformation avatarSrc = {avatarSrc} name = {fullName} labels = {contactLabels} datas = {contactInfos}/>
       <Section title = "Education" content = {Education(educationalExperiences)} />
       <Section title = "Practical Experience" content = {Practical(practicalExperiences)} />
     </div>
