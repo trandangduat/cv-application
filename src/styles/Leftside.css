@@ -7,14 +7,26 @@
     resize: both;
     overflow: auto;
     z-index: 1;
+    max-height: 100vh;
+    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.35);
+    > #header {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      h2 {
+        cursor: grabbing;
+      }
+    }
   }
   
   .section {
     border: 1px solid rgba(0, 0, 0, 0.10);
     background: #FFF;
     border-radius: 6px;
+    user-select: none;
     
-    & > #header {
+    > #header {
       padding: 1.2rem;
       padding-bottom: 0;
       

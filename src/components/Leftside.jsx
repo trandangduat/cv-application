@@ -1,3 +1,4 @@
+import { useState } from "react";
 import GeneralInfo from "./leftside/GeneralInfo.jsx";
 import Education from "./leftside/Education.jsx";
 import PracticalExperiences from "./leftside/PracticalExperiences.jsx";
@@ -47,11 +48,54 @@ function Section (props) {
     }
     default:
   }
+
+  const [windowMode, setWindowMode] = useState(false);
+  const [sectionPosition, setSectionPosition] = useState({x: 0, y: 0});
+  let cordDif; // distance between cursor coordinate and the section box coordinate
+
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    cordDif = {
+      x: e.clientX - sectionPosition.x,
+      y: e.clientY - sectionPosition.y,
+    };
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
+
+  const handleMouseMove = (e) => {
+    setSectionPosition({
+      x: e.clientX - cordDif.x,
+      y: e.clientY - cordDif.y,
+    });
+  };
+
+  const handleMouseUp = (e) => {
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+  };
   
   return (
-    <section className = "section">
+    <section 
+      className = "section" 
+      id = {windowMode ? "window" : null}
+      style = {
+        windowMode ? {
+          top: `${sectionPosition.y}px`,
+          left: `${sectionPosition.x}px`
+        } : null
+      }
+    >
       <div id = "header">
-        <h2>{props.title}</h2>
+        <h2 onMouseDown = {windowMode ? handleMouseDown : null}>{props.title}
+        </h2>
+        {
+          windowMode ? 
+          <button type = "input" onClick = {() => setWindowMode(false)}>Down</button>
+          :
+          <button type = "input" onClick = {() => setWindowMode(true)}>Popup</button>
+        }
       </div>
       <div id = "content">
         {content}
