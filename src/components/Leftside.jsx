@@ -3,6 +3,9 @@ import GeneralInfo from "./leftside/GeneralInfo.jsx";
 import Education from "./leftside/Education.jsx";
 import PracticalExperiences from "./leftside/PracticalExperiences.jsx";
 import '../styles/Leftside.css'
+import Icon from '@mdi/react';
+import { mdiArrowBottomLeft } from '@mdi/js';
+import { mdiOpenInNew } from '@mdi/js';
 
 function Section (props) {
   let content;
@@ -106,9 +109,13 @@ function Section (props) {
         </h2>
         {
           windowMode ? 
-          <button type = "button" onClick = {() => setWindowMode(false)}>Down</button>
+          <button type = "button" onClick = {() => setWindowMode(false)}>
+            <Icon path={mdiArrowBottomLeft} size={1 / 1.5} />
+          </button>
           :
-          <button type = "button" onClick = {() => setWindowMode(true)}>Popup</button>
+          <button type = "button" onClick = {() => setWindowMode(true)}>
+            <Icon path={mdiOpenInNew} size={1 / 1.5} />
+          </button>
         }
       </div>
       <div id = "content">
