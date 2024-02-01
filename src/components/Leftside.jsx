@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import GeneralInfo from "./leftside/GeneralInfo.jsx";
 import Education from "./leftside/Education.jsx";
 import PracticalExperiences from "./leftside/PracticalExperiences.jsx";
@@ -51,40 +51,54 @@ function Section (props) {
 
   const [windowMode, setWindowMode] = useState(false);
   const [sectionPosition, setSectionPosition] = useState({x: 0, y: 0});
-  let cordDif; // distance between cursor coordinate and the section box coordinate
-
+  const cordDif = useRef({x: 0, y: 0}); //  distance between cursor coordinate and the section box coordinate
+  
   const handleMouseDown = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    cordDif = {
+    cordDif.current = {
       x: e.clientX - sectionPosition.x,
       y: e.clientY - sectionPosition.y,
     };
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
+    
+    e.preventDefault();
+    e.stopPropagation();
   };
 
   const handleMouseMove = (e) => {
     setSectionPosition({
-      x: e.clientX - cordDif.x,
-      y: e.clientY - cordDif.y,
+      x: e.clientX - cordDif.current.x,
+      y: e.clientY - cordDif.current.y,
     });
   };
 
-  const handleMouseUp = (e) => {
+  const handleMouseUp = () => {
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
   };
+
+  const changeZIndex = (e) => {
+    if (!props.isOnTop) {
+      props.setSectionOnTop(props.index);
+      const newZIndex = props.zIndexCount + 1;
+      props.setZIndexCount(newZIndex);
+    }
+  }
   
   return (
     <section 
       className = "section" 
       id = {windowMode ? "window" : null}
+      onClick = {changeZIndex}
       style = {
         windowMode ? {
           top: `${sectionPosition.y}px`,
-          left: `${sectionPosition.x}px`
-        } : null
+          left: `${sectionPosition.x}px`,
+          zIndex: `${props.isOnTop ? props.zIndexCount : null}`,
+        } : {
+          width: 'auto',
+          height: 'auto',
+        }
       }
     >
       <div id = "header">
@@ -92,9 +106,9 @@ function Section (props) {
         </h2>
         {
           windowMode ? 
-          <button type = "input" onClick = {() => setWindowMode(false)}>Down</button>
+          <button type = "button" onClick = {() => setWindowMode(false)}>Down</button>
           :
-          <button type = "input" onClick = {() => setWindowMode(true)}>Popup</button>
+          <button type = "button" onClick = {() => setWindowMode(true)}>Popup</button>
         }
       </div>
       <div id = "content">
@@ -105,11 +119,18 @@ function Section (props) {
 }
 
 function Leftside (props) {
+  const [sectionOnTop, setSectionOnTop] = useState(1);
+  const [zIndexCount, setZIndexCount] = useState(10);
   return (
     <div className = "panel" id = "left-side">
       <Section 
         title = "General Information" 
         key = "1"
+        index = "1"
+        isOnTop = {sectionOnTop == 1}
+        zIndexCount = {zIndexCount}
+        setSectionOnTop = {setSectionOnTop}
+        setZIndexCount = {setZIndexCount}
         avatarSrc = {props.avatarSrc}
         fullName = {props.fullName}
         contactInfos = {props.contactInfos}
@@ -122,6 +143,11 @@ function Leftside (props) {
       <Section 
         title = "Education" 
         key = "2"
+        index = "2"
+        isOnTop = {sectionOnTop == 2}
+        zIndexCount = {zIndexCount}
+        setSectionOnTop = {setSectionOnTop}
+        setZIndexCount = {setZIndexCount}
         educationalExperiences = {props.educationalExperiences}
         changeEducation = {props.changeEducation}
         removeSchool = {props.removeSchool}
@@ -131,6 +157,11 @@ function Leftside (props) {
       <Section 
         title = "Practical Experiences"
         key = "3"
+        index = "3"
+        isOnTop = {sectionOnTop == 3}
+        zIndexCount = {zIndexCount}
+        setSectionOnTop = {setSectionOnTop}
+        setZIndexCount = {setZIndexCount}
         practicalExperiences = {props.practicalExperiences}
         changePracticalExperiences = {props.changePracticalExperiences}
         removeCompany = {props.removeCompany}
